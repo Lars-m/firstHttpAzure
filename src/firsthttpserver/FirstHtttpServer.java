@@ -32,7 +32,9 @@ public class FirstHtttpServer {
     server.createContext("/pages", new RequestForAFileHandler());
     server.setExecutor(null); // Use the default executor
     server.start();
-    System.out.println("Server started, listening on port: "+port+", Bound to IP:"+ip);
+    System.out.println("Server started, listening on port: "+port);
+    System.out.println("Bound to IP:"+ip);
+    System.out.println("Public Folder: "+publicFolder);
   }
 
   static class RequestHandler implements HttpHandler {
