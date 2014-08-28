@@ -1,0 +1,1 @@
+java -cp FirstHttpAzure.jar firsthttpserver.FirstHtttpServer
