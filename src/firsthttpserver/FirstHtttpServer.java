@@ -21,7 +21,7 @@ public class FirstHtttpServer {
   public static void main(String[] args) throws Exception {
     if(args.length == 2){
       port = Integer.parseInt(args[0]);
-      ip = args[0];
+      ip = args[1];
     }
     HttpServer server = HttpServer.create(new InetSocketAddress(ip,port), 0);
     server.createContext("/welcome", new RequestHandler());
