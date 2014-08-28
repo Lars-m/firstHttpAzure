@@ -1,1 +1,1 @@
-java -cp FirstHttpAzure.jar firsthttpserver.FirstHtttpServer
+java -cp FirstHttpAzure.jar firsthttpserver.FirstHtttpServer 8080 127.0.0.1 public
