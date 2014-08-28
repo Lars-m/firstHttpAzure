@@ -18,17 +18,21 @@ import java.net.InetSocketAddress;
 public class FirstHtttpServer {
   static int port = 8080;
   static String ip = "127.0.0.1";
+  static String publicFolder = "public/";
   public static void main(String[] args) throws Exception {
-    if(args.length == 2){
+    if(args.length >= 2){
       port = Integer.parseInt(args[0]);
       ip = args[1];
+    }
+    if(args.length==3){
+      publicFolder = args[2];
     }
     HttpServer server = HttpServer.create(new InetSocketAddress(ip,port), 0);
     server.createContext("/welcome", new RequestHandler());
     server.createContext("/pages", new RequestForAFileHandler());
     server.setExecutor(null); // Use the default executor
     server.start();
-    System.out.println("Server started, listening on port: "+port);
+    System.out.println("Server started, listening on port: "+port+", Bound to IP:"+ip);
   }
 
   static class RequestHandler implements HttpHandler {
@@ -64,7 +68,7 @@ public class FirstHtttpServer {
           mime = "application/java-archive";
           break;
       }
-      File file = new File("public/" + f);
+      File file = new File(publicFolder + f);
       byte[] bytesToSend = new byte[(int) file.length()];
       String errorMsg = null;
       int responseCode = 200;
